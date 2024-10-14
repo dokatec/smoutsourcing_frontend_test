@@ -1,0 +1,49 @@
+<main class="container">
+  <section class="container-login">
+    <img src="assets/logo.png" alt="" srcset="" />
+    <section class="login">
+      <div class="login-logo">
+        <div>
+          <img src="assets/log-in.svg" alt="" />
+          <h2>Faça seu login</h2>
+        </div>
+        <p>Entre com suas informações de cadastro.</p>
+      </div>
+      <form class="login-form" action="">
+        <label for="">E-mail</label>
+        <input
+          class="input-form"
+          type="text"
+          name="login"
+          placeholder="Digite seu e-mail"
+        />
+        <label for="">Senha</label>
+        <input
+          class="input-form"
+          type="password"
+          name="senha"
+          placeholder="Digite sua senha"
+        />
+        <button class="btn-form">Entrar</button>
+        <div class="conteiner-registrese">
+          <p>
+            Não tem uma conta?
+            <a
+              routerLink="/register"
+              routerLinkActive="active"
+              ariaCurrentWhenActive="page"
+              >Registre-se</a
+            >
+          </p>
+          <a href="#">Esqueci minha senha</a>
+        </div>
+      </form>
+    </section>
+  </section>
+
+  <section class="container-img">
+    <img src="assets/side-image.png" alt="Descrição da imagem" />
+  </section>
+</main>
+
+<router-outlet></router-outlet>

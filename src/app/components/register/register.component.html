@@ -1,0 +1,61 @@
+<main class="container">
+  <section class="container-img">
+    <img src="assets/image-cadastro.jpg" alt="Descrição da imagem" />
+  </section>
+  <section class="container-login">
+    <img src="assets/logo.png" alt="" srcset="" />
+    <section class="login">
+      <div class="login-logo">
+        <div>
+          <img src="assets/log-in.svg" alt="" />
+          <h2>Faça seu cadastro</h2>
+        </div>
+        <p>Entre com suas informações para cadastro.</p>
+      </div>
+      <form class="login-form" action="">
+        <label for="">Nome</label>
+        <input
+          class="input-form"
+          type="text"
+          name="login"
+          placeholder="Digite seu nome"
+        />
+        <label for="">CPF</label>
+        <input
+          class="input-form"
+          type="text"
+          name="senha"
+          placeholder="Digite seu cpf"
+        />
+        <label for="">E-mail</label>
+        <input
+          class="input-form"
+          type="email"
+          name="login"
+          placeholder="Digite seu e-mail"
+        />
+        <label for="">Senha</label>
+        <input
+          class="input-form"
+          type="password"
+          name="senha"
+          placeholder="Digite sua senha"
+        />
+        <button class="btn-form">Cadastrar</button>
+        <div class="conteiner-registrese">
+          <p>
+            Já tenho uma conta!
+            <a
+              routerLink="/login"
+              routerLinkActive="active"
+              ariaCurrentWhenActive="page"
+              >Fazer Login</a
+            >
+          </p>
+        </div>
+      </form>
+    </section>
+  </section>
+</main>
+
+<router-outlet></router-outlet>
