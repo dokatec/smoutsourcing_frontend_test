@@ -12,5 +12,5 @@ import { RegisterComponent } from './components/register/register.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'frontend';
+  
 }

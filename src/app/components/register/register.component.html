@@ -12,12 +12,14 @@
         </div>
         <p>Entre com suas informações para cadastro.</p>
       </div>
-      <form class="login-form" action="">
+      <form class="login-form" (submit)="register()">
         <label for="">Nome</label>
         <input
           class="input-form"
           type="text"
-          name="login"
+          id="name"
+          [(ngModel)]="user.name"
+          name="name"
           placeholder="Digite seu nome"
         />
         <label for="">CPF</label>
@@ -31,7 +33,9 @@
         <input
           class="input-form"
           type="email"
-          name="login"
+          id="email"
+          [(ngModel)]="user.email"
+          name="email"
           placeholder="Digite seu e-mail"
         />
         <label for="">Senha</label>
@@ -41,7 +45,7 @@
           name="senha"
           placeholder="Digite sua senha"
         />
-        <button class="btn-form">Cadastrar</button>
+        <button class="btn-form" type="submit">Cadastrar</button>
         <div class="conteiner-registrese">
           <p>
             Já tenho uma conta!
