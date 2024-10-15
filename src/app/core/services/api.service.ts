@@ -10,11 +10,20 @@ export class ApiService {
 
   constructor() { }
 
+  async getUsers(){
+    try {
+      const response = await axios.get(this.apiUrl);
+      return response.data;
+    } catch (error) {
+      console.error('Erro ao buscar usuarios',error)
+    }
+
+  }
+
   async createUser(user: any){
     try{
       const response = await axios.post(this.apiUrl, user);
       return response.data;
-
     }catch(error){
       console.error('Erro ao criar usuario', error);
       throw error;

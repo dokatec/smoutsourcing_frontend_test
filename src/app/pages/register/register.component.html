@@ -26,7 +26,9 @@
         <input
           class="input-form"
           type="text"
-          name="senha"
+          id="cpf"
+          [(ngModel)]="user.cpf"
+          name="cpf"
           placeholder="Digite seu cpf"
         />
         <label for="">E-mail</label>
@@ -42,6 +44,8 @@
         <input
           class="input-form"
           type="password"
+          id="senha"
+          [(ngModel)]="user.senha"
           name="senha"
           placeholder="Digite sua senha"
         />

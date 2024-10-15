@@ -1,0 +1,19 @@
+<app-header></app-header>
+
+<section class="container-camp">
+  <h2>CAMP CADASTRADOS</h2>
+  <table>
+    <tr>
+      <th>CAMP</th>
+      <th>NOME</th>
+      <th>CPF</th>
+      <th>E-MAIL</th>
+    </tr>
+    <tr *ngFor="let user of users">
+      <td>{{ user.id }}</td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.cpf }}</td>
+      <td>{{ user.email }}</td>
+    </tr>
+  </table>
+</section>
