@@ -31,6 +31,7 @@ export class CadastroComponent implements OnInit {
       try {
         const result = await this.apiService.createUser(this.userForm.value); 
         console.log('Usuário criado com sucesso:', result);
+        this.router.navigate(['/dashboard/']);
       } catch (error) {
         console.error('Erro ao criar usuário:', error);
       }

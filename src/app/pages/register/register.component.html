@@ -12,43 +12,92 @@
         </div>
         <p>Entre com suas informações para cadastro.</p>
       </div>
-      <form class="login-form" (submit)="register()">
+      <form [formGroup]="userForm" class="login-form" (ngSubmit)="register()">
         <label for="">Nome</label>
         <input
           class="input-form"
           type="text"
-          id="name"
-          [(ngModel)]="user.name"
-          name="name"
+          id="username"
+          name="username"
           placeholder="Digite seu nome"
         />
-        <label for="">CPF</label>
+        <div
+          *ngIf="
+            userForm.get('username')?.invalid &&
+            userForm.get('username')?.touched
+          "
+        >
+          <small *ngIf="userForm.get('username')?.errors?.['required']"
+            >Nome é obrigatório.</small
+          >
+          <small *ngIf="userForm.get('username')?.errors?.['maxlength']"
+            >Nome pode ter no máximo 100 caracteres.</small
+          >
+        </div>
+
+        <!-- <label for="">CPF</label>
         <input
           class="input-form"
           type="text"
           id="cpf"
-          [(ngModel)]="user.cpf"
           name="cpf"
           placeholder="Digite seu cpf"
         />
+        <div
+          *ngIf="userForm.get('cpf')?.invalid && userForm.get('cpf')?.touched"
+        >
+          <small *ngIf="userForm.get('cpf')?.errors?.['required']"
+            >CPF é obrigatório.</small
+          >
+          <small *ngIf="userForm.get('cpf')?.errors?.['pattern']"
+            >Formato de CPF inválido. Use xxx.xxx.xxx-xx.</small
+          >
+        </div> -->
         <label for="">E-mail</label>
         <input
           class="input-form"
           type="email"
           id="email"
-          [(ngModel)]="user.email"
           name="email"
           placeholder="Digite seu e-mail"
         />
+        <div
+          *ngIf="
+            userForm.get('email')?.invalid && userForm.get('email')?.touched
+          "
+        >
+          <small *ngIf="userForm.get('email')?.errors?.['required']"
+            >E-mail é obrigatório.</small
+          >
+          <small *ngIf="userForm.get('email')?.errors?.['email']"
+            >E-mail inválido.</small
+          >
+        </div>
         <label for="">Senha</label>
         <input
           class="input-form"
           type="password"
-          id="senha"
-          [(ngModel)]="user.senha"
-          name="senha"
+          id="password"
+          name="password"
           placeholder="Digite sua senha"
         />
+        <div
+          *ngIf="
+            userForm.get('password')?.invalid &&
+            userForm.get('password')?.touched
+          "
+        >
+          <small *ngIf="userForm.get('password')?.errors?.['required']"
+            >Senha é obrigatória.</small
+          >
+          <small *ngIf="userForm.get('password')?.errors?.['minlength']"
+            >Senha deve ter no mínimo 8 caracteres.</small
+          >
+          <small *ngIf="userForm.get('password')?.errors?.['pattern']"
+            >Senha deve conter letras maiúsculas e minúsculas, números e
+            caracteres especiais.</small
+          >
+        </div>
         <button class="btn-form" type="submit">Cadastrar</button>
         <div class="conteiner-registrese">
           <p>
@@ -65,5 +114,3 @@
     </section>
   </section>
 </main>
-
-<router-outlet></router-outlet>

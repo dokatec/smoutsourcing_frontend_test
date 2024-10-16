@@ -1,52 +1,40 @@
-import {Component, OnInit} from '@angular/core';
-import {
-  FormControl,
-  FormGroupDirective,
-  NgForm,
-  Validators,
-  FormsModule,
-  ReactiveFormsModule,
-} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import { RouterOutlet, RouterLink, RouterLinkActive, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../core/services/api.service';
-
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}
+import { Router } from '@angular/router';
+import { FormsModule, FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, RouterOutlet, RouterLink, RouterLinkActive ],
+  imports: [FormsModule, CommonModule, ReactiveFormsModule],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css',
-
+  styleUrls: ['./register.component.css'] 
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
+  userForm!: FormGroup;
 
-  user = { 
-    name: '',
-    cpf: '',
-    email: '',
-    senha: '',
-  };
+  constructor(private apiService: ApiService, private router: Router, private fb: FormBuilder) {}
 
-  constructor(private apiService: ApiService, private router: Router) {}
-
-  async register(){
-    try {
-      const result = await this.apiService.createUser(this.user);
-      this.router.navigate(['/login']);
-      console.log('Usuário criado com sucesso:', result);
-    } catch (error) {
-      console.error('Erro ao criar usuário:', error);
-    
+  ngOnInit(): void {
+    this.userForm = this.fb.group({
+      name: ['', [Validators.required, Validators.maxLength(100)]],
+      email: ['', [Validators.required, Validators.email]], 
+      senha: ['', [Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#\\$%\\^&\\*])(?=.*[a-zA-Z]).{8,}$')]]
+    });
   }
-}
+
+  async register() {
+    if (this.userForm?.valid) { 
+      try {
+        const result = await this.apiService.createUser(this.userForm.value); 
+        console.log('Usuário criado com sucesso:', result);
+        this.router.navigate(['/dashboard/']);
+      } catch (error) {
+        console.error('Erro ao criar usuário:', error);
+      }
+    } else {
+      console.error('Formulário inválido');
+    }
+  }
 }
