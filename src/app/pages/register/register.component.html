@@ -2,23 +2,21 @@
   <section class="container-img">
     <img src="assets/image-cadastro.jpg" alt="Descrição da imagem" />
   </section>
-  <section class="container-login">
-    <img src="assets/logo.png" alt="" srcset="" />
-    <section class="login">
-      <div class="login-logo">
-        <div>
-          <img src="assets/log-in.svg" alt="" />
-          <h2>Faça seu cadastro</h2>
-        </div>
-        <p>Entre com suas informações para cadastro.</p>
+  <section class="container-campCadastro">
+    <div class="login-logo">
+      <div>
+        <img src="assets/logo.png" alt="" />
       </div>
+    </div>
+    <section class="login">
       <form [formGroup]="userForm" class="login-form" (ngSubmit)="register()">
-        <label for="">Nome</label>
+        <label for="name">Nome</label>
         <input
           class="input-form"
           type="text"
           id="username"
           name="username"
+          formControlName="username"
           placeholder="Digite seu nome"
         />
         <div
@@ -35,12 +33,13 @@
           >
         </div>
 
-        <!-- <label for="">CPF</label>
+        <label for="cpf">CPF</label>
         <input
           class="input-form"
           type="text"
           id="cpf"
           name="cpf"
+          formControlName="cpf"
           placeholder="Digite seu cpf"
         />
         <div
@@ -52,13 +51,15 @@
           <small *ngIf="userForm.get('cpf')?.errors?.['pattern']"
             >Formato de CPF inválido. Use xxx.xxx.xxx-xx.</small
           >
-        </div> -->
-        <label for="">E-mail</label>
+        </div>
+
+        <label for="email">E-mail</label>
         <input
           class="input-form"
           type="email"
           id="email"
           name="email"
+          formControlName="email"
           placeholder="Digite seu e-mail"
         />
         <div
@@ -73,12 +74,14 @@
             >E-mail inválido.</small
           >
         </div>
-        <label for="">Senha</label>
+
+        <label for="senha">Senha</label>
         <input
           class="input-form"
           type="password"
           id="password"
           name="password"
+          formControlName="password"
           placeholder="Digite sua senha"
         />
         <div
@@ -98,19 +101,20 @@
             caracteres especiais.</small
           >
         </div>
+
         <button class="btn-form" type="submit">Cadastrar</button>
-        <div class="conteiner-registrese">
-          <p>
-            Já tenho uma conta!
-            <a
-              routerLink="/login"
-              routerLinkActive="active"
-              ariaCurrentWhenActive="page"
-              >Fazer Login</a
-            >
-          </p>
-        </div>
       </form>
+      <div class="conteiner-registrese">
+        <p>
+          Já tem uma conta?
+          <a
+            routerLink="/login"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            >Fazer login</a
+          >
+        </p>
+      </div>
     </section>
   </section>
 </main>

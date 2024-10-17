@@ -10,6 +10,9 @@ export class ApiService {
 
   private apiUrlAuth = "http://localhost:5029/api/auth/register";
 
+  private apiUrlLogin = "http://localhost:5029/api/auth/login";
+
+
   constructor() { }
 
   async getUsers(){
@@ -32,15 +35,26 @@ export class ApiService {
     }
   }
 
-async authUser(user: any){
-try {
+  async authUser(user: any){
+    try {
   const response = await axios.post(this.apiUrlAuth, user);
       return response.data;
       console.log("Server is Conecatad");
-} catch (error) {
-  console.error("Erro ao criar o usuario", error);
+    } catch (error) {
+    console.error("Erro ao criar o usuario", error);
   throw error;
-}
-}
+    }
+  }
+
+  async loginUser(user: any){
+    try {
+  const response = await axios.post(this.apiUrlLogin, user);
+      return response.data;
+      console.log("Server is Conecatad");
+    } catch (error) {
+    console.error("Erro ao criar o usuario", error);
+  throw error;
+    }
+  }
 
 }

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../../header/header.component';
-import { ApiService } from '../../../core/services/api.service';
 import { Router } from '@angular/router';
 import { FormsModule, FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ApiService } from '../../../core/services/api.service';
+
 
 @Component({
   selector: 'app-cadastro',

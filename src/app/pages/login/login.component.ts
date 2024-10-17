@@ -1,36 +1,45 @@
-import {Component} from '@angular/core';
-import {
-  FormControl,
-  FormGroupDirective,
-  NgForm,
-  Validators,
-  FormsModule,
-  ReactiveFormsModule,
-} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterOutlet, RouterLink, RouterLinkActive, Router } from '@angular/router';
+import { FormsModule, FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { ApiService } from '../../core/services/api.service';
 
 
-/** Error when invalid control is dirty, touched, or submitted. */
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}
-
-/** @title Input with a custom ErrorStateMatcher */
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
   standalone: true,
-  imports: [FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [FormsModule, CommonModule, ReactiveFormsModule, RouterOutlet, RouterLink, RouterLinkActive],
 })
-export class LoginComponent {
-  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+export class LoginComponent implements OnInit {
+  loginForm!: FormGroup;
 
-  matcher = new MyErrorStateMatcher();
+  constructor(private apiService: ApiService, private router: Router, private fb: FormBuilder) {}
+
+ngOnInit(): void {
+  this.loginForm = this.fb.group({
+    username: ['', [Validators.required, Validators.maxLength(100)]],
+    password: ['', [Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#\\$%\\^&\\*])(?=.*[a-zA-Z]).{8,}$')]]
+  
+  });
+  
+}
+
+  async login() {
+    if (this.loginForm?.valid) { 
+      try {
+        const result = await this.apiService.loginUser(this.loginForm.value); 
+        localStorage.setItem('token', result.token);
+        this.router.navigate(['/dashboard']);
+      } catch (error) {
+        console.error('Erro ao ao efetuar o login:', error);
+      }
+    } else {
+      console.error('Erro de API ou Codigo fonte');
+    }
+  }
+
+
+  
 }

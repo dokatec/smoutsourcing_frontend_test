@@ -9,21 +9,55 @@
         </div>
         <p>Entre com suas informações de cadastro.</p>
       </div>
-      <form class="login-form" action="">
+      <form [formGroup]="loginForm" class="login-form" (ngSubmit)="login()">
         <label for="">E-mail</label>
         <input
           class="input-form"
           type="text"
-          name="login"
+          id="username"
+          name="username"
+          formControlName="username"
           placeholder="Digite seu e-mail"
         />
+        <div
+          *ngIf="
+            loginForm.get('username')?.invalid &&
+            loginForm.get('username')?.touched
+          "
+        >
+          <small *ngIf="loginForm.get('username')?.errors?.['required']"
+            >Nome é obrigatório.</small
+          >
+          <small *ngIf="loginForm.get('username')?.errors?.['maxlength']"
+            >Nome pode ter no máximo 100 caracteres.</small
+          >
+        </div>
         <label for="">Senha</label>
         <input
           class="input-form"
           type="password"
-          name="senha"
+          id="password"
+          name="password"
+          formControlName="password"
           placeholder="Digite sua senha"
         />
+        <div
+          *ngIf="
+            loginForm.get('password')?.invalid &&
+            loginForm.get('password')?.touched
+          "
+        >
+          <small *ngIf="loginForm.get('password')?.errors?.['required']"
+            >Senha é obrigatória.</small
+          >
+          <small *ngIf="loginForm.get('password')?.errors?.['minlength']"
+            >Senha deve ter no mínimo 8 caracteres.</small
+          >
+          <small *ngIf="loginForm.get('password')?.errors?.['pattern']"
+            >Senha deve conter letras maiúsculas e minúsculas, números e
+            caracteres especiais.</small
+          >
+        </div>
         <button class="btn-form">Entrar</button>
         <div class="conteiner-registrese">
           <p>
