@@ -28,10 +28,8 @@ td {
   .container-camp {
     font-size: 12px;
   }
-  table,
-  th,
-  td {
-    display: flex;
-    flex-direction: column;
+
+  table {
+    width: 90%;
   }
 }
