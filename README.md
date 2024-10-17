@@ -1,27 +1,67 @@
-# Frontend
+# SM Outsourcing Frontend Teste
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.7.
+## Descrição
 
-## Development server
+Criação de um dashboard interativo que consome dados do backend api criando em asp.net core 8 com banco de dados postgres
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Tecnologias Utilizadas
 
-## Code scaffolding
+- **Frontend:** [Javascript, HTML, CSS, Angular 18, Axios, RxJS, Validator]
+<!-- - **backend:** []
+- **Banco de dados:** []
+- **Outras:** [] -->
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Pré-requisitos
 
-## Build
+- **Node.js:** [v20.15.1]
+- **npm:** [8.12.1]
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Instalação
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. **Clonar o repositório:**
 
-## Running end-to-end tests
+   ```bash
+   git clone https://github.com/dokatec/smoutsourcing_frontend_test.git
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+   ```
 
-## Further help
+2. **Acessar a pasta via CLI:**
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+   ```bash
+   cd smoutsourcing_frontend_test
+
+   ```
+
+3. **Instalar as dependências com npm via CLI:**
+
+   ```bash
+   npm install
+
+   ```
+
+4. **Iniciar a aplicação com npm via CLI:**
+
+   ```bash
+   npm start
+
+   ```
+
+5. **Acessar a aplicação pelo localhost:**
+
+   ```bash
+   http://localhost:4200
+
+   Por favor verificar caso a porta padrão 4200 esteja em uso com outra aplicação o proprio CLI irá informar a porta padrão.
+
+   ```   
+
+6. **Endereço padrão do backend api .net core 8 com asp.net**
+
+   ```bash
+    Por favor verificar as informações na pagina do git do projeto backend da API.
+    
+    https://github.com/dokatec/smoutsourcing_backend_test
+   
+   ```
+
