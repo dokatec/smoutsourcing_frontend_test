@@ -23,3 +23,15 @@ td {
   border: 1px solid white;
   border-collapse: collapse;
 }
+
+@media (min-width: 320px) and (max-width: 1200px) {
+  .container-camp {
+    font-size: 12px;
+  }
+  table,
+  th,
+  td {
+    display: flex;
+    flex-direction: column;
+  }
+}

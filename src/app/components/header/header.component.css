@@ -17,3 +17,13 @@ header {
 .navbar a:hover {
   color: #ffc632;
 }
+
+@media (min-width: 320px) and (max-width: 992px) {
+  header {
+    font-size: 12px;
+  }
+
+  header img {
+    display: none;
+  }
+}

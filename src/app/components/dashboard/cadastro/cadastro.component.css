@@ -56,3 +56,14 @@
 div small {
   color: #ffc632;
 }
+
+@media (min-width: 320px) and (max-width: 992px) {
+  .login-form {
+    width: 90%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+  }
+}
